@@ -1,4 +1,4 @@
-# vue-mimail
+# vue-mimall
 
 ## Project setup
 ```
