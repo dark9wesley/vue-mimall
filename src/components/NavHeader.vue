@@ -51,6 +51,15 @@ export default {
           background-color: #FF6600;
           text-align: center;
           color: #ffffff;
+
+          .icon-cart {
+            display: inline-block;
+            width: 16px;
+            height: 12px;
+            background: url('/imgs/icon-cart-checked.png') no-repeat center;
+            background-size: contain;
+            margin-right: 4px;
+          }
         }
       }
     }
