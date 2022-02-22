@@ -34,7 +34,12 @@
             <div class="children"></div>
           </div>
         </div>
-        <div class="header-search"></div>
+        <div class="header-search">
+          <div class="wrapper">
+            <input type="text" name="keyword">
+            <a href="javascript:;"></a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -127,8 +132,8 @@ export default {
         }
 
         .header-menu {
+          width: 643px;
           display: flex;
-          width: 200px;
           padding-left: 210px;
 
           .item-menu {
@@ -136,6 +141,7 @@ export default {
             font-weight: bold;
             font-size: 16px;
             line-height: 112px;
+            margin-right: 20px;
 
             span {
               cursor: pointer;
@@ -144,7 +150,32 @@ export default {
         }
 
         .header-search {
+          width: 320px;
+          
+          .wrapper {
+            height: 50px;
+            border: 1px solid #E0E0E0;
+            display: flex;
+            align-items: center;
 
+            input {
+              border: none;
+              border-right: 1px solid #E0E0E0;
+              width: 264px;
+              height: 50px;
+              padding-left: 14px;
+              box-sizing: border-box;
+            }
+
+            a{
+              display: inline-block;
+              width: 18px;
+              height: 18px;
+              background: url('/imgs/icon-search.png') no-repeat center;
+              background-size: contain;
+              margin-left: 17px;
+            }
+          }
         }
       }
     }
