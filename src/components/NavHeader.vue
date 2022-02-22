@@ -23,15 +23,27 @@
         <div class="header-menu">
           <div class="item-menu">
             <span>小米手机</span>
-            <div class="children"></div>
+            <ul class="children">
+              <li class="product">
+                <a href="javascript:;" target="_blank">
+                  <img class="pro-img" src="https://img1.360buyimg.com/n2/jfs/t1/197568/30/19848/72144/61b01d3aEcb5cb12e/ca75af12986a1aa9.jpg" />
+                  <div class="pro-name">
+                    小米CC9
+                  </div>
+                  <div class="pro-price">
+                    1799元
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
           <div class="item-menu">
             <span>RedMi红米</span>
-            <div class="children"></div>
+            <ul class="children"></ul>
           </div>
           <div class="item-menu">
             <span>电视</span>
-            <div class="children"></div>
+            <ul class="children"></ul>
           </div>
         </div>
         <div class="header-search">
@@ -52,6 +64,7 @@ export default {
 <style lang="scss">
   @import '../assets/scss/base.scss';
   @import '../assets/scss/mixin.scss';
+  @import '../assets/scss/config.scss';
 
   .header {
     .nav-topbar {
@@ -85,6 +98,7 @@ export default {
 
     .nav-header {
       .container {
+        position: relative;
         height: 112px;
         @include flex();
 
@@ -130,6 +144,75 @@ export default {
 
             span {
               cursor: pointer;
+
+              &:hover {
+                color: $colorA;
+              }
+            }
+
+            &:hover {
+              .children {
+                height: 220px;
+              }
+            }
+
+            .children {
+              position: absolute;
+              top: 112px;
+              left: 0px;
+              width: 1226px;
+              height: 220px;
+              border-top: 1px solid #E5E5E5;
+              box-shadow:0px 7px 6px 0px rgba(0, 0, 0, 0.11);
+              z-index: 10;
+              display: flex;
+
+              .product {
+                width: 16.6%;
+                height: 220px;
+                font-size: 12px;
+                line-height: 12px;
+                text-align: center;
+                position: relative;
+
+                &:after {
+                  content: '';
+                  display: inline-block;
+                  width: 1px;
+                  height: 110px;
+                  background: $colorF;
+                  position: absolute;
+                  right: 0;
+                  top: 28px;
+                }
+
+                &:last-child:after {
+                  display: none;
+                }
+
+                a {
+                  display: inline-block;
+                }
+
+                .pro-img {
+                  display: inline-block;
+                  width: auto;
+                  height: 110px;
+                  margin-top:26px;
+                }
+
+                .pro-name {
+                  font-weight: bold;
+                  margin-top: 13px;
+                  margin-bottom: 8px;
+                  color: $colorB;
+                }
+
+                .pro-price {
+                  color: $colorA;
+                }
+
+              }
             }
           }
         }
