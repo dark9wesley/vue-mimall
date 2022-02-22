@@ -43,7 +43,19 @@
           </div>
           <div class="item-menu">
             <span>电视</span>
-            <ul class="children"></ul>
+            <ul class="children">
+              <li class="product" v-for="d in tvData" :key="d.name">
+                <a href="javascript:;" target="_blank">
+                  <img class="pro-img" :src="`/imgs/nav-img/${d.imgName}`" />
+                  <div class="pro-name">
+                    {{ d.name }}
+                  </div>
+                  <div class="pro-price">
+                    {{ d.price }}
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
         <div class="header-search">
@@ -59,6 +71,42 @@
 <script>
 export default {
   name: 'NavHeader',
+  data(){
+    return {
+      tvData: [
+        {
+          imgName: 'nav-3-1.jpg',
+          name: '小米壁画电视 65英寸',
+          price: '6999元'
+        },
+        {
+          imgName: 'nav-3-2.jpg',
+          name: '小米全面屏电视E55A',
+          price: '1999元'
+        },
+        {
+          imgName: 'nav-3-3.png',
+          name: '小米电视4A 32英寸',
+          price: '6999元'
+        },
+        {
+          imgName: 'nav-3-4.jpg',
+          name: '小米电视4A 55英寸',
+          price: '1799元'
+        },
+        {
+          imgName: 'nav-3-5.jpg',
+          name: '小米电视4A 65英寸',
+          price: '2699元'
+        },
+        {
+          imgName: 'nav-3-6.png',
+          name: '查看全部',
+          price: '查看全部'
+        },
+      ]
+    }
+  }
 }
 </script>
 <style lang="scss">
