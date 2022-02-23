@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="app">
     <NavHeader />
     <div class="main">
       <router-view />
@@ -20,7 +20,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .container {
+  .app {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
