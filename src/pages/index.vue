@@ -1,7 +1,9 @@
 <template>
-  <div>
+  <div class="container">
     <NavHeader />
-    <router-view />
+    <div class="main">
+      <router-view />
+    </div>
     <NavFooter />
   </div>
 </template>
@@ -17,6 +19,14 @@ export default {
   }
 }
 </script>
-<style>
-  
+<style lang="scss" scoped>
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  .main {
+    flex: 1;
+  }
 </style>

@@ -15,7 +15,7 @@ export default {
   name: 'NavFooter'
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
   @import '../assets/scss/config.scss';
 
   .footer {
