@@ -23,7 +23,7 @@ export default {
     border-top: 4px solid $colorA;
     background-color: $colorB;
     color: $colorD;
-    font-size: 16px;
+    font-size: $fontI;
     text-align: center;
 
     .footer-logo {
@@ -46,7 +46,7 @@ export default {
         margin:0 10px;
       }
 
-      margin-bottom:16px;
+      margin-bottom: 16px;
     }
 
     .copyright{

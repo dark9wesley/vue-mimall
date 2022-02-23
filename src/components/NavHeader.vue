@@ -115,10 +115,9 @@ export default {
 
   .header {
     .nav-topbar {
-      height: 39px;
-      line-height: 39px;
-      background-color: #333333;
-      color: #B0B0B0;
+      height: $fontB;
+      line-height: $fontB;
+      background-color: $colorB;
 
       .container {
         @include flex();
@@ -131,9 +130,9 @@ export default {
 
         .my-cart {
           width: 110px;
-          background-color: #FF6600;
+          background-color: $colorA;
           text-align: center;
-          color: #ffffff;
+          color: $colorG;
 
           .icon-cart {
             @include bgImg(16px, 12px, '/imgs/icon-cart-checked.png');
@@ -152,7 +151,7 @@ export default {
         .header-logo {
           width: 55px;
           height: 55px;
-          background: #FF6600;
+          background: $colorA;
           overflow: hidden;
 
           a {
@@ -183,9 +182,9 @@ export default {
           padding-left: 210px;
 
           .item-menu {
-            color: #333333;
+            color: $colorB;
             font-weight: bold;
-            font-size: 16px;
+            font-size: $fontI;
             line-height: 112px;
             margin-right: 20px;
 
@@ -216,12 +215,12 @@ export default {
               display: flex;
               overflow: hidden;
               transition: all .5s;
-              background: #ffffff;
+              background: $colorG;
 
               .product {
                 width: 16.6%;
                 height: 220px;
-                font-size: 12px;
+                font-size: $fontK;
                 line-height: 12px;
                 text-align: center;
                 position: relative;
@@ -273,13 +272,13 @@ export default {
           
           .wrapper {
             height: 50px;
-            border: 1px solid #E0E0E0;
+            border: 1px solid $colorH;
             display: flex;
             align-items: center;
 
             input {
               border: none;
-              border-right: 1px solid #E0E0E0;
+              border-right: 1px solid $colorH;
               width: 264px;
               height: 50px;
               padding-left: 14px;
