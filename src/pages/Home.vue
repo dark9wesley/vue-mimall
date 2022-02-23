@@ -1,12 +1,15 @@
 <template>
-  <div>
+  <div class="home">
+    <ServiceBar />
   </div>
 </template>
 <script>
+import ServiceBar from '../components/ServiceBar.vue'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  components: { ServiceBar }
 }
 </script>
-<style>
-  
+<style lang='scss' scoped>
 </style>
