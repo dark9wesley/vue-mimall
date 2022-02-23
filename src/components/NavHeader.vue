@@ -216,7 +216,8 @@ export default {
               z-index: 10;
               display: flex;
               overflow: hidden;
-              transition: all .2s;
+              transition: all .5s;
+              background: #ffffff;
 
               .product {
                 width: 16.6%;
