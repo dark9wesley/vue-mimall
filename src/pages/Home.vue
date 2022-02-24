@@ -6,7 +6,16 @@
           <ul class="menu-wrap">
             <li class="menu-item" v-for="(m, i) in menuList" :key="i">
               <span>{{ m.name }}</span>
-              <!-- <div class="children" v-if="m.children">111</div> -->
+              <div class="children" v-if="m.children">
+                <ul v-for="(item, index) in menuDataList" :key="index">
+                  <li v-for="(sub) in item" :key="sub.id">
+                    <router-link :to="sub ? '/product/' + sub.id : '/'" >
+                      <img :src="sub ? sub.img : '/imgs/item-box-1.png'">
+                      {{sub ? sub.name : '小米9'}}
+                    </router-link>
+                  </li>
+                </ul>
+              </div>
             </li>
           </ul>
         </div>
@@ -111,6 +120,28 @@ export default {
           children: null,
         },
       ],
+       menuDataList:[
+          [
+            {
+              id:30,
+              img:'/imgs/item-box-1.png',
+              name:'小米CC9',
+            },{
+              id:31,
+              img:'/imgs/item-box-2.png',
+              name:'小米8青春版',
+            },{
+              id:32,
+              img:'/imgs/item-box-3.jpg',
+              name:'Redmi K20 Pro',
+            },{
+              id:33,
+              img:'/imgs/item-box-4.jpg',
+              name:'移动4G专区',
+            }
+          ],
+          [0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]
+        ],
     }
   }
 }
@@ -153,6 +184,42 @@ export default {
             &:hover {
               background-color: $colorA;
               cursor: pointer;
+
+              .children {
+                display: block;
+              }
+            }
+
+            .children {
+              display: none;
+              width: 962px;
+              height: 451px;
+              background-color: $colorG;
+              position:absolute;
+              top: -26px;
+              left:264px;
+              border:1px solid $colorH;
+              ul{
+                display:flex;
+                justify-content:space-between;
+                height:75px;
+                li{
+                  height:75px;
+                  line-height:75px;
+                  flex:1;
+                  padding-left:23px;
+                }
+                a{
+                  color:$colorB;
+                  font-size:14px;
+                }
+                img{
+                  width:42px;
+                  height:35px;
+                  vertical-align:middle;
+                  margin-right:15px;
+                }
+              }
             }
           }
         }
