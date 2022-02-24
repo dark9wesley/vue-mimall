@@ -24,14 +24,14 @@
           <div class="item-menu">
             <span>小米手机</span>
             <ul class="children">
-              <li class="product">
-                <a href="javascript:;" target="_blank">
-                  <img class="pro-img" src="https://img1.360buyimg.com/n2/jfs/t1/197568/30/19848/72144/61b01d3aEcb5cb12e/ca75af12986a1aa9.jpg" />
+              <li class="product" v-for="item in miData" :key="item.id">
+                <a target="_blank">
+                  <img class="pro-img" :src="item.mainImage" />
                   <div class="pro-name">
-                    小米CC9
+                    {{ item.name }}
                   </div>
                   <div class="pro-price">
-                    1799元
+                    {{item.price}}元
                   </div>
                 </a>
               </li>
@@ -39,7 +39,6 @@
           </div>
           <div class="item-menu">
             <span>RedMi红米</span>
-            <ul class="children"></ul>
           </div>
           <div class="item-menu">
             <span>电视</span>
@@ -69,10 +68,13 @@
   </div>
 </template>
 <script>
+import { request } from '../utils'
+
 export default {
   name: 'NavHeader',
   data(){
     return {
+      dataList: [],
       tvData: [
         {
           imgName: 'nav-3-1.jpg',
@@ -106,6 +108,25 @@ export default {
         },
       ]
     }
+  },
+  computed: {
+    miData(){
+      return this.dataList.slice(0, 6)
+    }
+  },
+  methods: {
+    async getProductList(){
+      const res = await request.get('/products', {
+        params: {
+          categoryId: '100012',
+          pageSize: 20
+        }
+      })
+      this.dataList = res.list
+    }
+  },
+  mounted(){
+    this.getProductList()
   }
 }
 </script>
