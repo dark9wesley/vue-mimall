@@ -34,7 +34,11 @@
           <img :src="item.img">
         </a>
       </div>
-      <div class="banner"></div>
+      <div class="banner">
+        <router-link to="/product/30">
+          <img src="/imgs/banner-1.png">
+        </router-link>
+      </div>
       <div class="product-box"></div>
     </div>
     <ServiceBar />
@@ -170,6 +174,11 @@ export default {
 
   .home {
 
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
     .swiper-box {
       position: relative;
 
@@ -265,12 +274,11 @@ export default {
       a{
         width:296px;
         height:167px;
-
-        img {
-          width: 100%;
-          height: 100%;
-        }
       }
+    }
+
+    .banner{
+      margin-bottom:50px;
     }
   }
 </style>
