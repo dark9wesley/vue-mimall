@@ -39,7 +39,33 @@
           <img src="/imgs/banner-1.png">
         </router-link>
       </div>
-      <div class="product-box"></div>
+    </div>
+    <div class="product-box">
+       <div class="container">
+         <h2>手机</h2>
+         <div class="wrapper">
+           <div class="banner-left">
+            <router-link to="/product/35">
+              <img src="/imgs/mix-alpha.jpg">
+            </router-link>
+           </div>
+           <div class="list-box">
+             <div class="list">
+               <div class="item">
+                 <span>新品</span>
+                 <div class="item-img">
+                   <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9aab8a7fa9005ef918c9aa2d5f17c806.jpg">
+                 </div>
+                 <div class="item-info">
+                   <h3>小米9</h3>
+                   <p>枭龙855</p>
+                   <p class="price">2999元</p>
+                 </div>
+               </div>
+             </div>
+           </div>
+         </div>
+       </div>
     </div>
     <ServiceBar />
   </div>
@@ -238,7 +264,7 @@ export default {
                 }
                 a{
                   color:$colorB;
-                  font-size:14px;
+                  font-size: $fontJ;
                 }
                 img{
                   width:42px;
@@ -279,6 +305,87 @@ export default {
 
     .banner{
       margin-bottom:50px;
+    }
+
+    .product-box {
+      background-color: $colorJ;
+      padding: 30px 0;
+
+      h2 {
+        font-size: $fontF;
+        height: 21px;
+        line-height: 21px;
+        color: $colorB;
+        margin-bottom: 20px;
+      }
+
+      .wrapper {
+        display: flex;
+
+        .banner-left {
+          margin-right: 16px;
+
+          img {
+            width: 224px;
+            height: 619px;
+          }
+        }
+
+        .list-box {
+          .list {
+            @include flex();
+            width: 986px;
+            margin-bottom: 14px;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            .item {
+              width: 236px;
+              height: 302px;
+              background-color: $colorG;
+              text-align: center;
+
+              .item-img {
+                img{
+                  width:100%;
+                  height:195px;
+                }
+              }
+
+              .item-info {
+                h3{
+                  font-size:$fontJ;
+                  color:$colorB;
+                  line-height:$fontJ;
+                  font-weight:bold;
+                }
+
+                p {
+                  color: $colorD;
+                  line-height: 13px;
+                  margin: 6px auto 13px;
+                }
+
+                .price {
+                  color: #F20A0A;
+                  font-size: $fontJ;
+                  font-weight: bold;
+                  cursor: pointer;
+
+                  &:after{
+                    @include bgImg(22px,22px,'/imgs/icon-cart-hover.png');
+                    content:' ';
+                    margin-left:5px;
+                    vertical-align: middle;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 </style>
