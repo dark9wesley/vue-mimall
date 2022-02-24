@@ -47,7 +47,7 @@ import 'swiper/dist/css/swiper.css'
 
 export default {
   name: 'Home',
-  components: { swiper, swiperSlide, ServiceBar  },
+  components: {  ServiceBar, swiper, swiperSlide  },
   data(){
     return {
       swiperOption:{
@@ -81,11 +81,11 @@ export default {
           img:'/imgs/slider/slide-3.jpg'
         },
         {
-          id:'',
+          id:'47',
           img:'/imgs/slider/slide-4.jpg'
         },
         {
-          id:'',
+          id:'48',
           img:'/imgs/slider/slide-1.jpg'
         }
       ],
