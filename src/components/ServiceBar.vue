@@ -25,9 +25,6 @@ export default {
     color: $colorC;
     font-size: $fontI;
     text-align: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
 
     li {
       display: inline-block;
