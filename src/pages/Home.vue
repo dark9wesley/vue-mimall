@@ -29,7 +29,10 @@
           <div class="swiper-button-next" slot="button-next"></div>
         </swiper>
       </div>
-      <div class="ads">
+      <div class="ads-box">
+        <a :href="'/product/'+item.id" v-for="(item,index) in adsList" :key="index">
+          <img :src="item.img">
+        </a>
       </div>
       <div class="banner"></div>
       <div class="product-box"></div>
@@ -120,28 +123,43 @@ export default {
           children: null,
         },
       ],
-       menuDataList:[
-          [
-            {
-              id:30,
-              img:'/imgs/item-box-1.png',
-              name:'小米CC9',
-            },{
-              id:31,
-              img:'/imgs/item-box-2.png',
-              name:'小米8青春版',
-            },{
-              id:32,
-              img:'/imgs/item-box-3.jpg',
-              name:'Redmi K20 Pro',
-            },{
-              id:33,
-              img:'/imgs/item-box-4.jpg',
-              name:'移动4G专区',
-            }
-          ],
-          [0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]
+      menuDataList:[
+        [
+          {
+            id:30,
+            img:'/imgs/item-box-1.png',
+            name:'小米CC9',
+          },{
+            id:31,
+            img:'/imgs/item-box-2.png',
+            name:'小米8青春版',
+          },{
+            id:32,
+            img:'/imgs/item-box-3.jpg',
+            name:'Redmi K20 Pro',
+          },{
+            id:33,
+            img:'/imgs/item-box-4.jpg',
+            name:'移动4G专区',
+          }
         ],
+        [0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]
+      ],
+      adsList:[
+        {
+          id:33,
+          img:'/imgs/ads/ads-1.png'
+        },{
+          id:48,
+          img:'/imgs/ads/ads-2.jpg'
+        },{
+          id:45,
+          img:'/imgs/ads/ads-3.png'
+        },{
+          id:47,
+          img:'/imgs/ads/ads-4.jpg'
+        }
+      ],
     }
   }
 }
@@ -237,6 +255,22 @@ export default {
           height:100%;
         }
       }  
+    }
+
+    .ads-box{
+      @include flex();
+      margin-top:14px;
+      margin-bottom:31px;
+      
+      a{
+        width:296px;
+        height:167px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
     }
   }
 </style>
