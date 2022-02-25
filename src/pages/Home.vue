@@ -51,15 +51,15 @@
            </div>
            <div class="list-box">
              <div class="list">
-               <div class="item">
-                 <span>新品</span>
+               <div class="item" v-for="(item, index) in dataList" :key="item.id">
+                 <span :class="index % 2 ? '' : 'new-pro'">新品</span>
                  <div class="item-img">
-                   <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9aab8a7fa9005ef918c9aa2d5f17c806.jpg">
+                   <img :src="item.mainImage">
                  </div>
                  <div class="item-info">
-                   <h3>小米9</h3>
-                   <p>枭龙855</p>
-                   <p class="price">2999元</p>
+                   <h3>{{ item.name }}</h3>
+                   <p>{{ item.subtitle }}</p>
+                   <p class="price">{{ item.price }}元</p>
                  </div>
                </div>
              </div>
@@ -71,6 +71,7 @@
   </div>
 </template>
 <script>
+import { request } from '../utils'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import ServiceBar from '../components/ServiceBar.vue'
 import 'swiper/dist/css/swiper.css'
@@ -190,7 +191,22 @@ export default {
           img:'/imgs/ads/ads-4.jpg'
         }
       ],
+      dataList: [],
     }
+  },
+  methods: {
+    async getProductList(){
+      const res = await request.get('/products', {
+        params: {
+          categoryId: 100012,
+          pageSize: 14
+        }
+      })
+      this.dataList = res.list.slice(6,14);
+    }
+  },
+  mounted(){
+    this.getProductList()
   }
 }
 </script>
@@ -334,18 +350,32 @@ export default {
         .list-box {
           .list {
             @include flex();
+            flex-wrap: wrap;
             width: 986px;
-            margin-bottom: 14px;
-
-            &:last-child {
-              margin-bottom: 0;
-            }
 
             .item {
               width: 236px;
               height: 302px;
               background-color: $colorG;
               text-align: center;
+              margin-bottom: 14px;
+
+              span {
+                display: inline-block;
+                width: 67px;
+                height: 24px;
+                font-size:14px;
+                line-height:24px;
+                color:$colorG;
+
+                &.new-pro{
+                  background-color:#7ECF68;
+                }
+
+                &.kill-pro{
+                  background-color:#E82626;
+                }
+              }
 
               .item-img {
                 img{

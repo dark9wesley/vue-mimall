@@ -24,7 +24,7 @@
           <div class="item-menu">
             <span>小米手机</span>
             <ul class="children">
-              <li class="product" v-for="item in miData" :key="item.id">
+              <li class="product" v-for="item in dataList" :key="item.id">
                 <a target="_blank">
                   <img class="pro-img" :src="item.mainImage" />
                   <div class="pro-name">
@@ -109,17 +109,12 @@ export default {
       ]
     }
   },
-  computed: {
-    miData(){
-      return this.dataList.slice(0, 6)
-    }
-  },
   methods: {
     async getProductList(){
       const res = await request.get('/products', {
         params: {
           categoryId: '100012',
-          pageSize: 20
+          pageSize: 6
         }
       })
       this.dataList = res.list
