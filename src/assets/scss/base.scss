@@ -2,3 +2,36 @@
   width: 1226px;
   margin: 0 auto;
 }
+
+.btn {
+  display: inline-block;
+  width: 110px;
+  line-height: 30px;
+  text-align: center;
+  background-color: $colorA;
+  color: $colorG;
+  cursor: pointer;
+}
+
+.btn-default {
+  background-color: #B0B0B0;
+  color:$colorG;
+}
+
+.btn-large {
+  width: 202px;
+  line-height: 50px;
+  font-size: $fontH;
+}
+
+.btn-huge {
+  width: 300px;
+  line-height: 54px;
+  font-size: $fontI;
+}
+
+.btn-group {
+  .btn:first-child {
+    margin-right: 20px;
+  }
+}

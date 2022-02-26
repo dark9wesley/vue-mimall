@@ -4,19 +4,22 @@
     <div class="modal-dialog">
       <div class="modal-header">
         <span class="modal-title">{{ title }}</span>
-        <span class="modal-close" />
+        <span class="icon-close" />
       </div>
       <div class="modal-body">
         <slot name="body"/>
       </div>
       <div class="modal-footer">
-        <span class="btn">确定</span>
-        <span class="btn">取消</span>
+        <div class="btn-group">
+          <span class="btn">确定</span>
+          <span class="btn btn-default">取消</span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+
 export default {
   name: 'Modal',
   props: {
@@ -50,6 +53,48 @@ export default {
       @include position(fixed);
       background-color: $colorI;
       opacity: 0.5;
+    }
+
+    .modal-dialog {
+      @include position(absolute, 50%, 50%, 660px, auto);
+      background-color: $colorG;
+      transform: translate(-50%, -50%);
+
+      .modal-header {
+        height: 60px;
+        background-color: $colorG;
+        padding: 0 25px;
+        font-size: $fontI;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .modal-title {
+          font-weight: bold;
+        }
+
+        .icon-close {
+          @include bgImg(14px, 14px, '/imgs/icon-close.png');
+          cursor: pointer;
+          transition: transform .5s;
+
+          &:hover {
+            transform: scale(1.5);
+          }
+        }
+      }
+
+      .modal-body {
+        padding: 42px 40px 52px;
+        font-size: $fontJ;
+      }
+
+      .modal-footer {
+        height: 82px;
+        line-height: 82px;
+        text-align: center;
+        background-color: $colorG;
+      }
     }
   }
 </style>
