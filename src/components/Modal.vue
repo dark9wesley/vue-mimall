@@ -52,6 +52,7 @@ export default {
 
   .modal {
     @include position(fixed);
+    z-index: 10;
 
     .mask {
       @include position(fixed);
