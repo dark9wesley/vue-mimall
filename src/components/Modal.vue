@@ -1,22 +1,26 @@
 <template>
-  <div class="modal" v-show="showModal">
-    <div class="mask"></div>
-    <div class="modal-dialog">
-      <div class="modal-header">
-        <span class="modal-title">{{ title }}</span>
-        <span class="icon-close" />
-      </div>
-      <div class="modal-body">
-        <slot name="body"/>
-      </div>
-      <div class="modal-footer">
-        <div class="btn-group">
-          <span class="btn">确定</span>
-          <span class="btn btn-default">取消</span>
+  <transition name="slide">
+    <div class="modal" v-show="showModal">
+      <div class="mask"></div>
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <span class="modal-title">{{ title }}</span>
+          <span class="icon-close" @click="$emit('cancel')"/>
+        </div>
+        <div class="modal-body">
+          <slot name="body"/>
+        </div>
+        <div class="modal-footer">
+          <span class="btn" v-if="btnType === '1'" @click="$emit('ok')">{{ okText }}</span>
+          <span class="btn" v-else-if="btnType === '2'" @click="$emit('cancel')">{{ cancelText }}</span>
+          <div class="btn-group" v-else>
+            <span class="btn" @click="$emit('ok')">{{ okText }}</span>
+            <span class="btn btn-default" @click="$emit('cancel')">{{ cancelText }}</span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </transition>
 </template>
 <script>
 
@@ -96,5 +100,14 @@ export default {
         background-color: $colorG;
       }
     }
+
+    &.slide-enter, &.slide-leave-to {
+      top: -100%;
+    }
+
+    &.slide-enter-active, &.slide-leave-active {
+      transition: all .5s;
+    }
+
   }
 </style>

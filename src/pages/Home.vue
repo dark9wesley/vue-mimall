@@ -59,7 +59,7 @@
                  <div class="item-info">
                    <h3>{{ item.name }}</h3>
                    <p>{{ item.subtitle }}</p>
-                   <p class="price">{{ item.price }}元</p>
+                   <p class="price" @click="addCart">{{ item.price }}元</p>
                  </div>
                </div>
              </div>
@@ -69,11 +69,13 @@
     </div>
     <ServiceBar />
     <Modal 
-      :showModal="true" 
+      :showModal="showModal"
       title="提示" 
       okText="查看购物车" 
       btnType="1" 
       modalType="middle"
+      @ok="gotoCard"
+      @cancel="setModalShow"
     >
       <template v-slot:body>
         <p>
@@ -95,6 +97,7 @@ export default {
   components: { ServiceBar, swiper, swiperSlide, Modal  },
   data(){
     return {
+      showModal: false,
       swiperOption:{
         autoplay:true,
         loop:true,
@@ -217,6 +220,17 @@ export default {
         }
       })
       this.dataList = res.list.slice(6,14);
+    },
+    setModalShow(){
+      this.showModal = !this.showModal
+    },
+    addCart(){
+      // TODO 添加购物车的逻辑
+      this.setModalShow()
+    },
+    gotoCard(){
+      // TODO 跳转购物车页面的逻辑
+      this.setModalShow()
     }
   },
   mounted(){
