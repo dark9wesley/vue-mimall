@@ -1,7 +1,7 @@
 <template>
   <div class="footer">
     <div class="footer-logo">
-      <img src="/imgs/logo-footer.png" />
+      <img v-lazy="'/imgs/logo-footer.png'" />
     </div>
     <div class="footer-link">
       <a href="https://github.com/pengyw97">wesley主页</a><span>|</span>

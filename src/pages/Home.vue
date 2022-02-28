@@ -10,7 +10,7 @@
                 <ul v-for="(item, index) in menuDataList" :key="index">
                   <li v-for="(sub) in item" :key="sub.id">
                     <router-link :to="sub ? '/product/' + sub.id : '/'" >
-                      <img :src="sub ? sub.img : '/imgs/item-box-1.png'">
+                      <img v-lazy="sub ? sub.img : '/imgs/item-box-1.png'">
                       {{sub ? sub.name : '小米9'}}
                     </router-link>
                   </li>
@@ -21,7 +21,7 @@
         </div>
         <swiper :options="swiperOption">
           <swiperSlide v-for="p in slideList" :key="p.id">
-            <router-link :to="`/product/${p.id}`"><img :src="p.img"></router-link>
+            <router-link :to="`/product/${p.id}`"><img v-lazy="p.img"></router-link>
           </swiperSlide>
            <!-- Optional controls -->
           <div class="swiper-pagination"  slot="pagination"></div>
@@ -31,12 +31,12 @@
       </div>
       <div class="ads-box">
         <a :href="'/product/'+item.id" v-for="(item,index) in adsList" :key="index">
-          <img :src="item.img">
+          <img v-lazy="item.img">
         </a>
       </div>
       <div class="banner">
         <router-link to="/product/30">
-          <img src="/imgs/banner-1.png">
+          <img v-lazy="'/imgs/banner-1.png'">
         </router-link>
       </div>
     </div>
@@ -46,7 +46,7 @@
          <div class="wrapper">
            <div class="banner-left">
             <router-link to="/product/35">
-              <img src="/imgs/mix-alpha.jpg">
+              <img v-lazy="'/imgs/mix-alpha.jpg'">
             </router-link>
            </div>
            <div class="list-box">
@@ -54,7 +54,7 @@
                <div class="item" v-for="(item, index) in dataList" :key="item.id">
                  <span :class="index % 2 ? '' : 'new-pro'">新品</span>
                  <div class="item-img">
-                   <img :src="item.mainImage">
+                   <img v-lazy="item.mainImage">
                  </div>
                  <div class="item-info">
                    <h3>{{ item.name }}</h3>

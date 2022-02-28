@@ -26,7 +26,7 @@
             <ul class="children">
               <li class="product" v-for="item in dataList" :key="item.id">
                 <a target="_blank">
-                  <img class="pro-img" :src="item.mainImage" />
+                  <img class="pro-img" v-lazy="item.mainImage" />
                   <div class="pro-name">
                     {{ item.name }}
                   </div>
@@ -45,7 +45,7 @@
             <ul class="children">
               <li class="product" v-for="d in tvData" :key="d.name">
                 <a href="javascript:;" target="_blank">
-                  <img class="pro-img" :src="`/imgs/nav-img/${d.imgName}`" />
+                  <img class="pro-img" v-lazy="`/imgs/nav-img/${d.imgName}`" />
                   <div class="pro-name">
                     {{ d.name }}
                   </div>
