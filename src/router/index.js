@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../pages/Index'
-import Home from '../pages/Home'
 
 // 使用Router插件
 Vue.use(Router)
@@ -17,9 +16,13 @@ export default new Router({
       children: [
         {
           path: '/home',
-          component: Home,
+          component: () => import('../pages/Home.vue'),
         }
       ]
+    },
+    {
+      path: '/login',
+      component: () => import('../pages/Login.vue'),
     }
   ]
 })

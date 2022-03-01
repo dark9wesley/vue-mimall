@@ -7,7 +7,7 @@
       <a href="https://github.com/pengyw97">wesley主页</a><span>|</span>
       <a href="https://github.com/pengyw97/vue-mimall">VUE小米商城实战</a>
     </div>
-    <div class="copyright">Copyright ©2022 <span class="domain">mi.futurefe.com</span> All Rights Reserved.</div>
+    <div class="copyright">Copyright ©2022 All Rights Reserved.</div>
   </div>
 </template>
 <script>

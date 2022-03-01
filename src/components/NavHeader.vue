@@ -9,7 +9,7 @@
           <a href="javascript:;">协议规则</a>
         </div>
         <div class="topbar-user">
-          <a href="javascript:;">登录</a>
+          <router-link to="/login">登录</router-link>
           <a href="javascript:;">我的订单</a>
           <a href="javascript:;" class="my-cart"><span class="icon-cart" />购物车</a>
         </div>
