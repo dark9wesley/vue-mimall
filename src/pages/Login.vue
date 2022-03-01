@@ -7,7 +7,7 @@
       <div class="container">
         <div class="login-form">
           <h3>
-            <span class="checked">帐号登录</span><span class="sep-line">|</span><span>扫码登录</span>
+            <span class="checked">帐号登录</span><span class="sep-line">|</span><span @click="noComplete">扫码登录</span>
           </h3>
           <div class="input">
             <input type="text" placeholder="请输入帐号" v-model="username">
@@ -19,7 +19,7 @@
             <a href="javascript:;" class="btn" @click="login">登录</a>
           </div>
           <div class="tips">
-            <div class="sms" @click="register">手机短信登录/注册</div>
+            <div class="sms" @click="noComplete">手机短信登录/注册</div>
           </div>
         </div>
       </div>
@@ -34,8 +34,32 @@
   </div>
 </template>
 <script>
+import { request } from '../utils'
+
 export default {
   name: 'Login',
+  data(){
+    return {
+      username: '',
+      password: ''
+    }
+  },
+  methods: {
+    async login(){
+      let { username, password } = this
+      const res = await request.post('/user/login', {
+        username, 
+        password 
+      })
+      // TODO 引入vuex保存用户名
+
+      this.$cookie.set('userId', res.id, { expires: 'Session' })
+      this.$router.push({ path: '/home', params: { from: '/login' }})
+    },
+    async noComplete(){
+      alert('暂未实现！')
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -96,7 +120,8 @@ export default {
               width: 100%;
               height: 100%;
               border: none;
-              padding-left: 18px;
+              padding: 18px;
+              box-sizing: border-box;
             }
           }
 

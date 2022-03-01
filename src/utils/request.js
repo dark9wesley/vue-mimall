@@ -14,7 +14,12 @@ const request = axios.create({
 request.interceptors.response.use((response) => {
   // 响应拦截
   const res = response.data
-  if(res.status === 0) return res.data
+  if(res.status === 0){
+    return res.data
+  }else {
+    alert(res.msg)
+    return Promise.reject(res.msg)
+  }
 }, error => {
   return Promise.reject(error)
 })
