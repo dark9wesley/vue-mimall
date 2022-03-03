@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
-// import store from './store'
+import store from './store'
 import router from './router' 
 import lazyLoad from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
@@ -14,7 +14,7 @@ Vue.use(lazyLoad, {
 Vue.use(VueCookie)
 
 new Vue({
-  // store,
+  store,
   router,
   render: h => h(App),
 }).$mount('#app')
