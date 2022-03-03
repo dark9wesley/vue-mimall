@@ -3,9 +3,26 @@
 </template>
 
 <script>
+import { request } from './utils'
 
 export default {
   name: 'App',
+  methods: {
+    async getUser(){
+      await request.get('/user')
+
+      //todo 保存在VUEX
+    },
+    async getCartCount(){
+      await request.get('/carts/products/sum')
+
+      //todo 保存在VUEX
+    }
+  },
+  mounted(){
+    this.getUser()
+    this.getCartCount()
+  }
 }
 </script>
 
