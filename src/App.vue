@@ -9,9 +9,8 @@ export default {
   name: 'App',
   methods: {
     async getUser(){
-      await request.get('/user')
-
-      //todo 保存在VUEX
+      const res = await request.get('/user')
+      this.$store.dispatch('saveUserName', res.username)
     },
     async getCartCount(){
       await request.get('/carts/products/sum')

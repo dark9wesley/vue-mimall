@@ -51,8 +51,7 @@ export default {
         username, 
         password 
       })
-      // TODO 引入vuex保存用户名
-
+      this.$store.dispatch('saveUserName', username)
       this.$cookie.set('userId', res.id, { expires: 'Session' })
       this.$router.push({ path: '/home', params: { from: '/login' }})
     },

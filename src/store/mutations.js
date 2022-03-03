@@ -1,3 +1,5 @@
 export default {
-  a(){}
+  saveUserName(state, username){
+    state.username = username
+  }
 }

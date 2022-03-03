@@ -1,3 +1,5 @@
 export default {
-  a(){}
+  saveUserName(context, username){
+    context.commit('saveUserName', username)
+  }
 }

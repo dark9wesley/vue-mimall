@@ -9,7 +9,8 @@
           <a href="javascript:;">协议规则</a>
         </div>
         <div class="topbar-user">
-          <router-link to="/login">登录</router-link>
+          <a href="javascript:;" v-if="username">{{username}}</a>
+          <router-link v-else to="/login">登录</router-link>
           <a href="javascript:;">我的订单</a>
           <a href="javascript:;" class="my-cart"><span class="icon-cart" />购物车</a>
         </div>
@@ -109,6 +110,11 @@ export default {
       ]
     }
   },
+  computed: {
+    username(){
+      return this.$store.state.username
+    }
+  }, 
   methods: {
     async getProductList(){
       const res = await request.get('/products', {
