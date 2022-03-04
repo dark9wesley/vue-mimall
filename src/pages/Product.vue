@@ -37,14 +37,16 @@
       <div class="item-video">
         <h2>60帧超慢动作摄影<br/>慢慢回味每一瞬间的精彩</h2>
         <p>后置960帧电影般超慢动作视频，将眨眼间的美妙展现得淋漓尽致！<br/>更能AI 精准分析视频内容，15个场景智能匹配背景音效。</p>
-        <div class="video-bg"></div>
-        <div class="video-box">
-          <div class="overlay"></div>
-          <div class="video">
-            <span class="icon-close"></span>
-            <video src="/imgs/product/video.mp4" muted autoplay controls="controls"></video>
+        <div class="video-bg" @click="showVideo = true"></div>
+        <transition name="slide"> 
+          <div class="video-box" v-if="showVideo">
+            <div class="overlay"></div>
+              <div class="video">
+                <span class="icon-close" @click="showVideo = false"></span>
+                <video src="/imgs/product/video.mp4" muted autoplay controls="controls"></video>
+              </div>
           </div>
-        </div>
+        </transition>
       </div>
     </div>
   </div>
@@ -58,6 +60,7 @@ export default {
   components: { NavBar, swiper, swiperSlide },
   data(){
     return {
+      showVideo: false,
       swiperOption: {
         autoplay: true,
         slidesPerView: 3,
@@ -201,10 +204,8 @@ export default {
           }
 
           .video {
-            @include position(fixed, 50%, 50%);
+            @include position(absolute, 50%, 50%, 1000px, 536px);
             transform: translate(-50%, -50%);
-            width: 1000px;
-            height: 536px;
 
             video {
               width: 100%;
@@ -221,6 +222,15 @@ export default {
               z-index: 12;
               @include bgImg(20px, 20px, '/imgs/icon-close.png');
             }
+          }
+
+          &.slide-enter, &.slide-leave-to {
+            top: -100%;
+            opacity: 0;
+          }
+
+          &.slide-enter-active, &.slide-leave-active {
+            transition: all .5s;
           }
         }
 
