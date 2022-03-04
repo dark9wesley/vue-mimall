@@ -1,16 +1,19 @@
 <template>
-  <div class="nav-bar" :class="{isFixed}">
-    <div class="container">
-      <div class="pro-title">
-        {{ title }}
-      </div>
-      <div class="pro-param">
-        <a>概述</a><span>｜</span>
-        <a>参数</a><span>｜</span>
-        <a>用户评价</a><span></span>
-        <slot name='buy'/>
+  <div>
+    <div class="nav-bar" :class="{isFixed}">
+      <div class="container">
+        <div class="pro-title">
+          {{ title }}
+        </div>
+        <div class="pro-param">
+          <a>概述</a><span>｜</span>
+          <a>参数</a><span>｜</span>
+          <a>用户评价</a><span></span>
+          <slot name='buy'/>
+        </div>
       </div>
     </div>
+    <div class="nav-bar-blank" v-if="isFixed"></div>
   </div>
 </template>
 <script>
@@ -77,5 +80,9 @@ export default {
         margin: 0 10px
       }
     }
+  }
+
+  .nav-bar-blank {
+    height: 70px;
   }
 </style>
