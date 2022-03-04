@@ -17,6 +17,10 @@ export default new Router({
         {
           path: '/home',
           component: () => import('../pages/Home.vue'),
+        },
+        {
+          path: '/product/:id',
+          component: () => import('../pages/Product.vue'),
         }
       ]
     },

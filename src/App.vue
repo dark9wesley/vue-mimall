@@ -20,7 +20,7 @@ export default {
   },
   mounted(){
     this.getUser()
-    this.getCartCount()
+    // this.getCartCount()
   }
 }
 </script>
