@@ -1,15 +1,21 @@
 <template>
   <div class="detail">
-    <ProductParam />
+    <NavBar>
+      <template v-slot:buy>
+        <div class="btn">
+          111
+        </div>
+      </template>
+    </NavBar>
     Detail
   </div>
 </template>
 <script>
-import ProductParam from '../components/ProductParam.vue'
+import NavBar from '../components/NavBar'
 
 export default {
   name: 'Product',
-  components: {ProductParam}
+  components: {NavBar}
 }
 </script>
 <style lang="scss" scoped>
