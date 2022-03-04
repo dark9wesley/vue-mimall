@@ -26,7 +26,7 @@
             <span>小米手机</span>
             <ul class="children">
               <li class="product" v-for="item in dataList" :key="item.id">
-                <a target="_blank">
+                <router-link :to="/product/ + item.id">
                   <img class="pro-img" v-lazy="item.mainImage" />
                   <div class="pro-name">
                     {{ item.name }}
@@ -34,7 +34,7 @@
                   <div class="pro-price">
                     {{item.price}}元
                   </div>
-                </a>
+                </router-link>
               </li>
             </ul>
           </div>
@@ -45,7 +45,7 @@
             <span>电视</span>
             <ul class="children">
               <li class="product" v-for="d in tvData" :key="d.name">
-                <a href="javascript:;" target="_blank">
+                <router-link to="">
                   <img class="pro-img" v-lazy="`/imgs/nav-img/${d.imgName}`" />
                   <div class="pro-name">
                     {{ d.name }}
@@ -53,7 +53,7 @@
                   <div class="pro-price">
                     {{ d.price }}
                   </div>
-                </a>
+                </router-link>
               </li>
             </ul>
           </div>

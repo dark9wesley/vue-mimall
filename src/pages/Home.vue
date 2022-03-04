@@ -30,9 +30,9 @@
         </swiper>
       </div>
       <div class="ads-box">
-        <a :href="'/product/'+item.id" v-for="(item,index) in adsList" :key="index">
+        <router-link :href="'/product/'+item.id" v-for="(item,index) in adsList" :key="index">
           <img v-lazy="item.img">
-        </a>
+        </router-link>
       </div>
       <div class="banner">
         <router-link to="/product/30">
@@ -53,9 +53,11 @@
              <div class="list">
                <div class="item" v-for="(item, index) in dataList" :key="item.id">
                  <span :class="index % 2 ? '' : 'new-pro'">新品</span>
-                 <div class="item-img">
-                   <img v-lazy="item.mainImage">
-                 </div>
+                 <router-link :to="'/product/' + item.id">
+                  <div class="item-img">
+                    <img v-lazy="item.mainImage">
+                  </div>
+                 </router-link>
                  <div class="item-info">
                    <h3>{{ item.name }}</h3>
                    <p>{{ item.subtitle }}</p>
