@@ -30,7 +30,7 @@
         </swiper>
       </div>
       <div class="ads-box">
-        <router-link :href="'/product/'+item.id" v-for="(item,index) in adsList" :key="index">
+        <router-link :to="'/product/'+item.id" v-for="(item,index) in adsList" :key="index">
           <img v-lazy="item.img">
         </router-link>
       </div>
@@ -92,7 +92,6 @@ import { request } from '../utils'
 import { swiper, swiperSlide } from 'vue-awesome-swiper'
 import ServiceBar from '../components/ServiceBar'
 import Modal from '../components/Modal'
-import 'swiper/dist/css/swiper.css'
 
 export default {
   name: 'Home',

@@ -4,6 +4,7 @@ import store from './store'
 import router from './router' 
 import lazyLoad from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
+import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false
 
