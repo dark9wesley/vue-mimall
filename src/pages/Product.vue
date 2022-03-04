@@ -3,11 +3,10 @@
     <NavBar>
       <template v-slot:buy>
         <div class="btn">
-          111
+          立即购买
         </div>
       </template>
     </NavBar>
-    Detail
   </div>
 </template>
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-bar">
+  <div class="nav-bar" :class="{isFixed}">
     <div class="container">
       <div class="pro-title">
         小米8
@@ -15,7 +15,24 @@
 </template>
 <script>
 export default {
-  name: 'NavBar'
+  name: 'NavBar',
+  data(){
+    return {
+      isFixed: false
+    }
+  },
+  methods: {
+    initScroll(){
+      const top = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop
+      this.isFixed = top > 160
+    }
+  },
+  mounted(){
+    window.addEventListener('scroll', this.initScroll)
+  },
+  beforeDestroy(){
+    window.removeEventListener('scroll', this.initScroll)
+  }
 }
 </script>
 <style lang="scss" scoped>
@@ -25,6 +42,15 @@ export default {
   .nav-bar {
     height: 70px;
     line-height: 70px;
+    background-color: $colorG;
+    z-index: 10;
+
+    &.isFixed {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      box-shadow: 0 5px 5px $colorE;
+    }
 
     .container {
       @include flex()
