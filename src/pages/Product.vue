@@ -105,89 +105,123 @@ export default {
         height: 718px;
         text-align: center;
 
-        h2{
+        h2 {
           font-size: $fontA;
           padding-top: 55px;
         }
 
-        h3{
+        h3 {
           font-size: $fontE;
           letter-spacing: 10px;
         }
 
-        p{
+        p {
           margin-top: 21px;
           margin-bottom: 40px;
 
-          a{
+          a {
             font-size: $fontI;
             color: $colorB;
           }
 
-          span{
+          span {
             margin: 0 15px;
           }
         }
 
-        .price{
+        .price {
           font-size: 30px;
           color: $colorB;
 
-          em{
+          em {
             font-style: normal;
             font-size: 38px;
           }
         }
       }
 
-      .item-bg-2{
+      .item-bg-2 {
         @include bgImg(100%, 100%, '/imgs/product/product-bg-2.png', 1226px 397px);
         height: 480px;
       }
 
-      .item-bg-3{
+      .item-bg-3 {
         @include bgImg(100%, 100%, '/imgs/product/product-bg-3.png', cover);
         height: 638px;
       }
 
-      .item-swiper{
+      .item-swiper {
         margin: 36px auto 52px;
 
-        .desc{
+        .desc {
           font-size: $fontH;
           color: $colorB;
           text-align: center;
         }
 
-        img{
+        img {
           width: 100%;
         }
       }
 
-      .item-video{
+      .item-video {
         height: 1044px;
         background-color: #070708;
         margin-bottom: 76px;
         color: $colorG;
         text-align: center;
 
-        h2{
+        h2 {
           font-size: 60px;
           padding-top: 82px;
           margin-bottom: 47px;
         }
 
-        p{
+        p {
           font-size: $fontE;
           margin-bottom: 58px;
         }
 
-        .video-bg{
+        .video-bg {
           @include bgImg(100%, 100%, '/imgs/product/gallery-1.png', cover);
           width:1226px;
           height:540px;
           margin:0 auto 120px;
           cursor:pointer;
+        }
+
+        .video-box {
+          @include position(fixed);
+          z-index: 10;
+
+          .overlay {
+            @include position(fixed);
+            background-color: $colorI;
+            opacity: .5;
+          }
+
+          .video {
+            @include position(fixed, 50%, 50%);
+            transform: translate(-50%, -50%);
+            width: 1000px;
+            height: 536px;
+
+            video {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              outline:none;
+            }
+
+            .icon-close {
+              position: absolute;
+              top: 20px;
+              right: 20px;
+              cursor: pointer;
+              z-index: 12;
+              @include bgImg(20px, 20px, '/imgs/icon-close.png');
+            }
+          }
         }
 
       }
