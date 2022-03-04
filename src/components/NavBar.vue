@@ -2,7 +2,7 @@
   <div class="nav-bar" :class="{isFixed}">
     <div class="container">
       <div class="pro-title">
-        小米8
+        {{ title }}
       </div>
       <div class="pro-param">
         <a>概述</a><span>｜</span>
@@ -16,6 +16,12 @@
 <script>
 export default {
   name: 'NavBar',
+  props: {
+    title: {
+      type: String,
+      default: '',
+    }
+  },
   data(){
     return {
       isFixed: false
