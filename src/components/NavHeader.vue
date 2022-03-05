@@ -12,7 +12,7 @@
           <a href="javascript:;" v-if="username">{{username}}</a>
           <router-link v-else to="/login">登录</router-link>
           <a href="javascript:;">我的订单</a>
-          <router-link to="/cart" class="my-cart"><span class="icon-cart" />购物车</router-link>
+          <router-link to="/cart" class="my-cart"><span class="icon-cart" />购物车 <span>{{ cartCount || '' }}</span></router-link>
         </div>
       </div>
     </div>
@@ -69,6 +69,7 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex'
 import { request } from '../utils'
 
 export default {
@@ -111,9 +112,7 @@ export default {
     }
   },
   computed: {
-    username(){
-      return this.$store.state.username
-    }
+    ...mapState(['username', 'cartCount'])
   }, 
   methods: {
     async getProductList(){

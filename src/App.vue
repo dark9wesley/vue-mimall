@@ -9,9 +9,12 @@ export default {
   name: 'App',
   methods: {
     async getCartCount(){
-      await request.get('/carts/products/sum')
-
-      //TODO 保存在VUEX
+      // 由于获取购物车数量的接口有问题，用这个
+      const res = await request.put(`/carts/40`,{
+          productTotalPrice: 699,
+      })
+      const total = res.cartProductVoList?.length || 0
+      this.$store.dispatch('saveCartCount', total)
     },
     getUser(){
       return JSON.parse(localStorage.getItem('user'))
@@ -22,6 +25,7 @@ export default {
     const user = this.getUser()
     if(user){
       this.$store.dispatch('saveUserName', user.username)
+      this.getCartCount()
     }
   }
 }
