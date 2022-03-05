@@ -21,7 +21,11 @@ export default new Router({
         {
           path: '/product/:id',
           component: () => import('../pages/Product.vue'),
-        }
+        },
+        {
+          path: '/detail/:id',
+          component: () => import('../pages/Detail.vue'),
+        },
       ]
     },
     {
