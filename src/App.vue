@@ -15,7 +15,7 @@ export default {
     async getCartCount(){
       await request.get('/carts/products/sum')
 
-      //todo 保存在VUEX
+      //TODO 保存在VUEX
     }
   },
   mounted(){

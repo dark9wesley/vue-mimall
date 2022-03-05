@@ -29,6 +29,10 @@ export default new Router({
       ]
     },
     {
+      path: '/cart',
+      component: () => import('../pages/Cart.vue'),
+    },
+    {
       path: '/login',
       component: () => import('../pages/Login.vue'),
     }

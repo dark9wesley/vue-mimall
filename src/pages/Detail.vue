@@ -102,7 +102,7 @@ export default {
         selected: true,
       })
       console.log(res.cartTotalQuantity)
-      //Todo 将购物车数量加进vuex里
+      //TODO 将购物车数量加进vuex里
     }
   },
   mounted(){
