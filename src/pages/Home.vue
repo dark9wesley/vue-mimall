@@ -61,7 +61,7 @@
                  <div class="item-info">
                    <h3>{{ item.name }}</h3>
                    <p>{{ item.subtitle }}</p>
-                   <p class="price" @click="addCart">{{ item.price }}元</p>
+                   <p class="price" @click="addCart(item.id)">{{ item.price }}元</p>
                  </div>
                </div>
              </div>
@@ -225,12 +225,17 @@ export default {
     setModalShow(){
       this.showModal = !this.showModal
     },
-    addCart(){
-      // TODO 添加购物车的逻辑
+    async addCart(id){
+      const res = await request.post('/carts', {
+        productId: id,
+        selected: true,
+      })
+      const total = res.cartProductVoList?.length || 0 
+      this.$store.dispatch('saveCartCount', total)
       this.setModalShow()
     },
     gotoCard(){
-      // TODO 跳转购物车页面的逻辑
+      this.$router.push('/cart')
       this.setModalShow()
     }
   },

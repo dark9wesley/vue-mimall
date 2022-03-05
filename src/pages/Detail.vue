@@ -101,8 +101,9 @@ export default {
         productId: id,
         selected: true,
       })
-      console.log(res.cartTotalQuantity)
-      //TODO 将购物车数量加进vuex里
+      const total = res.cartProductVoList?.length || 0 
+      this.$store.dispatch('saveCartCount', total)
+      alert('添加成功')
     }
   },
   mounted(){
