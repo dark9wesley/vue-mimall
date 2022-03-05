@@ -51,7 +51,7 @@ export default {
         username, 
         password 
       })
-      this.$store.dispatch('saveUserName', username)
+      localStorage.setItem('user', JSON.stringify(res))
       this.$cookie.set('userId', res.id, { expires: 'Session' })
       this.$router.push({ path: '/home', params: { from: '/login' }})
     },

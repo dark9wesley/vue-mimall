@@ -8,19 +8,21 @@ import { request } from './utils'
 export default {
   name: 'App',
   methods: {
-    async getUser(){
-      const res = await request.get('/user')
-      this.$store.dispatch('saveUserName', res.username)
-    },
     async getCartCount(){
       await request.get('/carts/products/sum')
 
       //TODO 保存在VUEX
-    }
+    },
+    getUser(){
+      return JSON.parse(localStorage.getItem('user'))
+    },
+
   },
   mounted(){
-    this.getUser()
-    // this.getCartCount()
+    const user = this.getUser()
+    if(user){
+      this.$store.dispatch('saveUserName', user.username)
+    }
   }
 }
 </script>
