@@ -2,7 +2,7 @@
   <div class="product">
     <NavBar :title="product.name">
       <template v-slot:buy>
-        <div class="btn">
+        <div class="btn" @click="goDetail">
           立即购买
         </div>
       </template>
@@ -102,6 +102,10 @@ export default {
       const id = this.$route.params.id
       const res = await request.get(`/products/${id}`)
       this.product = res
+    },
+    goDetail(){
+      const id = this.$route.params.id
+      this.$router.push('/detail/' + id)
     }
   },
   mounted(){
