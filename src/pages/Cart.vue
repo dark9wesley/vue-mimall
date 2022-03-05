@@ -41,7 +41,7 @@
           </div>
           <div class="total fr">
             合计：<span>{{cartTotalPrice}}</span>元
-            <a href="javascript:;" class="btn">去结算</a>
+            <a href="javascript:;" class="btn" @click="order">去结算</a>
           </div>
         </div>
       </div>
@@ -79,7 +79,7 @@ export default {
   },
   methods: {
     async getCartList(){
-      const res = await request.put(`/carts/40`,{
+      const res = await request.put(`/carts/41`,{
           productTotalPrice: 699,
       })
       this.renderData(res)
@@ -130,6 +130,15 @@ export default {
       this.list = cartProductVoList || []
       this.allChecked = selectedAll
       this.cartTotalPrice = cartTotalPrice
+    },
+    // 购物车下单
+    order(){
+      const isCheck = this.list.every(item =>!item.productSelected);
+      if(isCheck){
+        alert('请选择一件商品');
+      }else{
+        this.$router.push('/order/confirm');
+      }
     }
   },
   mounted(){
