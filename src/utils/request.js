@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { Message } from 'element-ui'
 
 const request = axios.create({
   baseURL: '/api',
@@ -20,9 +21,11 @@ request.interceptors.response.use((response) => {
   } else if(res.status === 10){
     if(path !== '/home' && path !== '/login'){
       window.location.href = '/login'
+      Message.warning(res.msg)
       return Promise.reject(res.msg)
     }
   } else {
+    Message.warning(res.msg)
     return Promise.reject(res.msg)
   }
 }, error => {

@@ -4,7 +4,9 @@ import store from './store'
 import router from './router' 
 import lazyLoad from 'vue-lazyload'
 import VueCookie from 'vue-cookie'
+import { Message } from 'element-ui'
 import 'swiper/dist/css/swiper.css'
+import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.config.productionTip = false
 
@@ -13,6 +15,8 @@ Vue.use(lazyLoad, {
 })
 
 Vue.use(VueCookie)
+
+Vue.prototype.$message = Message
 
 new Vue({
   store,

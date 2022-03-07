@@ -56,7 +56,7 @@ export default {
       this.$router.push({ path: '/home', params: { from: '/login' }})
     },
     async noComplete(){
-      alert('暂未实现！')
+      this.$message.warning('暂未实现！')
     }
   }
 }

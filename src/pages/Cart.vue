@@ -97,13 +97,13 @@ export default {
 
       if(type == '-'){
         if(quantity == 1){
-          alert('商品至少保留一件');
+          this.$message.warning('商品至少保留一件')
           return;
         }
         --quantity;
       }else if(type == '+'){
         if(quantity > item.productStock){
-          alert('购买数量不能超过库存数量');
+          this.$message.warning('购买数量不能超过库存数量')
           return;
         }
         ++quantity;
@@ -123,7 +123,7 @@ export default {
     async delProduct(item){
       const res = await request.delete(`/carts/${item.productId}`)
       this.renderData(res);
-      alert('删除成功');
+      this.$message.warning('删除成功')
     },
     renderData(data){
       const { cartProductVoList, cartTotalPrice, selectedAll } = data 
@@ -135,7 +135,7 @@ export default {
     order(){
       const isCheck = this.list.every(item =>!item.productSelected);
       if(isCheck){
-        alert('请选择一件商品');
+        this.$message.warning('请选择一件商品')
       }else{
         this.$router.push('/order/confirm');
       }

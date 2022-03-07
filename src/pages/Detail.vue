@@ -103,7 +103,7 @@ export default {
       })
       const total = res.cartProductVoList?.length || 0 
       this.$store.dispatch('saveCartCount', total)
-      alert('添加成功')
+       this.$message.success('添加成功')
     }
   },
   mounted(){
