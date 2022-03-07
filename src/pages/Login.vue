@@ -53,7 +53,8 @@ export default {
       })
       localStorage.setItem('user', JSON.stringify(res))
       this.$cookie.set('userId', res.id, { expires: 'Session' })
-      this.$router.push({ path: '/home', params: { from: '/login' }})
+      window.location.href = '/home'
+      // this.$router.push({ path: '/home', params: { from: '/login' }})
     },
     async noComplete(){
       this.$message.warning('暂未实现！')

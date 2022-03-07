@@ -123,7 +123,7 @@ export default {
     async delProduct(item){
       const res = await request.delete(`/carts/${item.productId}`)
       this.renderData(res);
-      this.$message.warning('删除成功')
+      this.$message.success('删除成功')
     },
     renderData(data){
       const { cartProductVoList, cartTotalPrice, selectedAll } = data 

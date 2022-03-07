@@ -10,9 +10,10 @@
         </div>
         <div class="topbar-user">
           <a href="javascript:;" v-if="username">{{username}}</a>
+          <a href="javascript:;" v-if="username" @click="logout">退出</a>
           <router-link v-else to="/login">登录</router-link>
           <a href="javascript:;">我的订单</a>
-          <router-link to="/cart" class="my-cart"><span class="icon-cart" />购物车 <span>{{ cartCount || '' }}</span></router-link>
+          <router-link to="/cart" class="my-cart"><span class="icon-cart" />购物车 <span>{{ cartCount }}</span></router-link>
         </div>
       </div>
     </div>
@@ -123,6 +124,14 @@ export default {
         }
       })
       this.dataList = res.list
+    },
+    async logout(){
+      await request.post('/user/logout')
+      this.$cookie.set('userId', '', {expires: '-1'})
+      this.$store.commit('saveUserName', '')
+      this.$store.commit('saveCartCount', 0)
+      window.localStorage.removeItem('user')
+      this.$message.success('退出成功')
     }
   },
   mounted(){
