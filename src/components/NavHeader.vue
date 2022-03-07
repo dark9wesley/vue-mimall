@@ -13,7 +13,7 @@
           <a href="javascript:;" v-if="username" @click="logout">退出</a>
           <router-link v-else to="/login">登录</router-link>
           <a href="javascript:;">我的订单</a>
-          <router-link to="/cart" class="my-cart"><span class="icon-cart" />购物车 <span>{{ cartCount }}</span></router-link>
+          <router-link to="/cart" class="my-cart"><span class="icon-cart" />购物车 <span>{{ cartCount || '' }}</span></router-link>
         </div>
       </div>
     </div>
