@@ -92,7 +92,6 @@ export default {
     async getProductInfo(){
       const id = this.$route.params.id
       const res = await request.get(`/products/${id}`)
-      console.log(res)
       this.product = res
     },
     async addCart(){

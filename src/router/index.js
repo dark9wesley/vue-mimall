@@ -35,6 +35,26 @@ export default new Router({
     {
       path: '/login',
       component: () => import('../pages/Login.vue'),
-    }
+    },
+    
+    {
+      path: '/order',
+      component: () => import('../pages/Order/index.vue'),
+      redirect: '/order/list',
+      children: [
+        {
+          path: 'list',
+          component: () => import('../pages/Order/OrderList.vue')
+        },
+        {
+          path: 'confirm',
+          component: () => import('../pages/Order/OrderConfirm.vue')
+        },
+        {
+          path: 'pay',
+          component: () => import('../pages/Order/OrderPay.vue')
+        },
+      ]
+    },
   ]
 })
