@@ -80,7 +80,6 @@ export default {
   methods: {
     async getCartList(){
       const res = await request.delete(`/carts/1`)
-      
       this.renderData(res)
     },
     // 控制全选功能
