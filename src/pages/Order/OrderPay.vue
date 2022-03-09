@@ -67,11 +67,80 @@
   </div>
 </template>
 <script>
+import QRCode from 'qrcode'
 import Modal from '../../components/Modal'
+import { request } from '../../utils'
 
 export default {
   name: 'OrderPay',
-  components: { Modal }
+  components: { 
+    Modal, 
+  },
+  data(){
+    return {
+      orderId: this.$route.query.orderNo,
+      addressInfo: '', //收货人地址
+      orderDetail: [], //订单详情，包含商品列表
+      showDetail: false,//是否显示订单详情
+      payType: '', //支付类型
+      showPay: false, //是否显示微信支付弹框
+      payImg: '', //微信支付的二维码地址
+      showPayModal: false, //是否显示二次支付确认弹框
+      payment: 0, //订单总金额
+      T: '' //定时器ID
+    }
+  },
+  mounted(){
+    this.getOrderDetail();
+  },
+  methods:{
+    async getOrderDetail(){
+      const res = await request.get(`/orders/${this.orderId}`)
+      let item = res.shippingVo;
+      this.addressInfo = `${item.receiverName} ${item.receiverMobile} ${item.receiverProvince} ${item.receiverCity} ${item.receiverDistrict} ${item.receiverAddress}`;
+      this.orderDetail = res.orderItemVoList;
+      this.payment = res.payment;
+    },
+    async paySubmit(payType){
+      if(payType == 1){
+        window.open('/order/alipay?orderId='+this.orderId, '_blank');
+      }else{
+        const res = await request.post('/pay', {
+          orderId: this.orderId,
+          orderName: 'Vue高仿小米商城',
+          amount: 0.01, //单位元
+          payType:2 //1支付宝，2微信
+        })
+        try {
+          const url = QRCode.toDataURL(res.content)
+          this.showPay = true;
+          this.payImg = url;
+          this.loopOrderState();
+        } catch (e) {
+          this.$message.error('微信二维码生成失败，请稍后重试');
+        }
+      }
+    },
+    // 关闭微信弹框
+    closePayModal(){
+      this.showPay = false;
+      this.showPayModal = true;
+      clearInterval(this.T);
+    },
+    // 轮询当前订单支付状态
+    loopOrderState(){
+      this.T = setInterval(async() => {
+        const res = await request.get(`/orders/${this.orderId}`)
+        if(res.status == 20){
+          clearInterval(this.T);
+          this.goOrderList();
+        }
+      },1000);
+    },
+    goOrderList(){
+      this.$router.push('/order/list');
+    }
+  }
 }
 </script>
 <style lang="scss" scoped>
