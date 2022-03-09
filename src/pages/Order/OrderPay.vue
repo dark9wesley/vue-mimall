@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <scan-pay-code v-if="showPay" @close="closePayModal" :img="payImg"></scan-pay-code>
+    <ScanPayCode v-if="showPay" @close="closePayModal" :img="payImg"></ScanPayCode>
     <modal
       title="支付确认"
       btnType="3"
@@ -69,12 +69,14 @@
 <script>
 import QRCode from 'qrcode'
 import Modal from '../../components/Modal'
+import ScanPayCode from '../../components/ScanPayCode'
 import { request } from '../../utils'
 
 export default {
   name: 'OrderPay',
   components: { 
     Modal, 
+    ScanPayCode
   },
   data(){
     return {
@@ -112,7 +114,7 @@ export default {
           payType:2 //1支付宝，2微信
         })
         try {
-          const url = QRCode.toDataURL(res.content)
+          const url = await QRCode.toDataURL(res.content)
           this.showPay = true;
           this.payImg = url;
           this.loopOrderState();
