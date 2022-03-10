@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '../pages/Index'
+import Home from '../pages/Home'
 
 // 使用Router插件
 Vue.use(Router)
@@ -16,7 +17,7 @@ export default new Router({
       children: [
         {
           path: '/home',
-          component: () => import('../pages/Home.vue'),
+          component: Home,
         },
         {
           path: '/product/:id',
