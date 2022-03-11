@@ -10,7 +10,7 @@ module.exports = {
     }
   },
   // publicPath: '/dist',
-  productionSourceMap: false,
+  // productionSourceMap: false,
   // 防止预加载资源
   chainWebpack: config => {
     config.plugins.delete('prefetch')
